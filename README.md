@@ -1,16 +1,158 @@
-# React + Vite
+# 📄 Document Extraction & Validation System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based document processing tool that extracts structured data from **PDF, CSV, and TXT files**, validates it, and allows manual review before final approval. All data is stored locally using `localStorage`.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+### 📂 File Processing
+Supports:
+- PDF (pdfjs-dist)
+- CSV (papaparse)
+- TXT (plain text)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Files are converted into raw text for extraction.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🧠 Data Extraction
+Extracts:
+- Document type (invoice, purchase order, etc.)
+- Supplier / vendor
+- Document number
+- Issue date
+- Due date
+- Currency
+- Line items (description, quantity, unit price, totals)
+- Subtotal, tax, total
+
+Uses rule-based parsing with fallback logic for messy real-world formats.
+
+---
+
+### 🔍 Validation Engine
+Validates:
+- Required fields
+- Date correctness
+- Line item structure
+- Subtotal + tax consistency
+- Total accuracy
+
+Invalid documents are flagged for review.
+
+---
+
+### 🧾 Review Workflow
+Users can:
+- Review extracted data
+- Edit fields
+- Edit line items
+- Confirm validation
+- Reject documents
+
+---
+
+### 💾 Persistent Storage
+Uses `localStorage` to store:
+- Documents
+- Extracted data
+- Validation results
+- Final edits
+
+Data is automatically restored on app load.
+
+---
+
+### 🚫 Duplicate Prevention
+Prevents duplicate uploads using:
+
+fileSignature = name + size + lastModified
+
+If a duplicate is detected, upload is blocked with a warning.
+
+---
+
+### 📊 Dashboard
+Shows:
+- All documents
+- Status (uploaded / needs review / validated / rejected)
+- Currency totals
+
+---
+
+## 🧱 Tech Stack
+
+- React (Hooks + useReducer)
+- PDF.js (pdfjs-dist)
+- PapaParse (CSV parsing)
+- localStorage
+- CSS / Tailwind (depending on setup)
+
+---
+
+## 📂 Project Structure
+
+src/
+- components/
+  - Dashboard.jsx
+  - ReviewDocument.jsx
+- utils/
+  - documentProcessing.js
+  - reducer.js
+  - storage.js
+- App.jsx
+- App.css
+
+---
+
+## ⚙️ How It Works
+
+1. Upload file (PDF / CSV / TXT)
+2. Convert file to text
+3. Extract structured data
+4. Validate extracted data
+5. Store in state + localStorage
+6. Allow manual review
+
+---
+
+## 🔐 Duplicate Protection
+
+Each file is identified using:
+
+name + size + lastModified
+
+This prevents re-uploading the same file.
+
+---
+
+## 📦 Installation
+
+npm install  
+npm run dev
+
+---
+
+## 📌 Future Improvements
+
+- Content-based hashing for duplicates
+- Advanced table extraction
+- Export to Excel / accounting tools
+- Backend sync
+- Multi-user support
+
+---
+
+## 🧠 Design Philosophy
+
+- Local-first processing
+- Fast extraction
+- Minimal backend dependency
+- Manual validation for accuracy
+
+---
+
+## 📄 License
+
+MIT
