@@ -191,3 +191,14 @@ This project demonstrates:
 - real-world document processing pipeline simulation
 
 It serves as a foundation for a scalable document automation system.
+
+# 🤖 AI-Assisted Development
+
+This project was developed using AI tools as part of the engineering workflow:
+
+- Claude was used to help generate the initial project structure and skeleton
+- ChatGPT was used for iterative problem-solving, debugging, and refining specific implementation details
+
+All architectural decisions, logic design, and final implementation were reviewed, adjusted, and integrated manually.
+
+AI was used as an assistant to accelerate development, not as a replacement for engineering decisions.
