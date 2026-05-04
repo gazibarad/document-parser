@@ -61,7 +61,6 @@ export default function ReviewDocument({
                   error={hasErrors && !currentDocument.finalData.issueDate}
                 />
               </div>
-              {console.log("finalDataTax", currentDocument.finalData)}
               <div className="space-y-4">
                 <Field
                   label="Due Date"
